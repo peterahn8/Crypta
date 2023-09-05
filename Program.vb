@@ -9,14 +9,24 @@ Module Program
 
         Dim inputPath As String = ""
         Dim encryptedPath As String = ""
-        Dim decrypedPath As String = ""
+        Dim decryptedPath As String = ""
 
         Try
+            ' Encrypt file
             EncryptFile(inputPath, encryptedPath, key, iv)
 
-        Catch ex As Exception
+            Console.WriteLine("File has been encrypted!")
 
+            ' Decrypt file
+            DecryptFile(encryptedPath, decryptedPath, key, iv)
+
+            Console.WriteLine("File has been decrypted!")
+        Catch ex As Exception
+            Console.WriteLine("Error occurred: " & ex.Message)
         End Try
+
+        Console.WriteLine("Press any key to exit Crypta!")
+        Console.ReadKey()
     End Sub
 
     Function GenerateRandomKey() As Byte()
